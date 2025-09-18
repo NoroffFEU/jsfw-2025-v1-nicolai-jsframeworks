@@ -1,10 +1,10 @@
 import React from "react";
-import ProductItem from "./components/ProductItem";
+import ProductFocus from "./components/ProductFocus";
 
 function App() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <ProductItem />
+      <ProductFocus />
     </div>
   );
 }
