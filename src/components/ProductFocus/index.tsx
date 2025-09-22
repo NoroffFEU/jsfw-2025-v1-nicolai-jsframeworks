@@ -48,7 +48,7 @@ const starIconSize = window.innerWidth < 640 ? 12 : 14;
 
 const ProductFocus = () => {
   return (
-    <div className="relative w-fit h-auto bg-gray-100/[90%] rounded-[10px] backdrop-blur p-1 flex flex-col sm:flex-row gap-7 items-center outline outline-1 outline-primary">
+    <div className="relative w-fit h-auto bg-gray-100/[90%] rounded-[10px] backdrop-blur p-1 flex flex-col md:flex-row gap-7 items-center outline outline-1 outline-primary">
       <p className="text-primary text-[8px] absolute -top-4 tracking-[0.1rem] font-inter font-bold uppercase w-full text-center">
         {product.id}
       </p>
@@ -58,14 +58,14 @@ const ProductFocus = () => {
         className="z-10 w-[274px] h-auto rounded-[8px] overflow-hidden aspect-square"
       />
       {/* Info right side */}
-      <div className="p-3 sm:p-4 bg-secondary z-10 w-[274px] h-auto rounded-[8px] flex flex-col items-start overflow-hidden aspect-square gap-2 sm:gap-3 relative">
-        <h2 className="text-[14px] sm:text-[16px] font-inter font-bold uppercase leading-4 sm:leading-5 text-left tracking-[0.075rem]">
+      <div className="p-3 md:p-4 bg-secondary z-10 w-[274px] h-auto rounded-[8px] flex flex-col items-start overflow-hidden aspect-square gap-2 md:gap-3 relative">
+        <h2 className="text-[14px] md:text-[16px] font-inter font-bold uppercase leading-4 md:leading-5 text-left tracking-[0.075rem]">
           {product.title}
         </h2>
         <div className="flex flex-row items-end justify-between w-full">
           {/* Tag and price */}
           <div className="w-fit h-full flex flex-col justify-between">
-            <p className="bottom-[2px] right-0 text-[6px] sm:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-secondary">
+            <p className="bottom-[2px] right-0 text-[6px] md:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-secondary">
               {product.tags[0]}
             </p>
             <div className="flex items-center gap-1">
@@ -75,7 +75,7 @@ const ProductFocus = () => {
                 height="11"
                 viewBox="0 0 12 11"
                 fill="none"
-                className="block sm:hidden"
+                className="block md:hidden"
               >
                 <path
                   d="M5.24168 0.381439C5.63221 -0.00908507 6.2662 -0.00908507 6.65672 0.381439L10.8989 4.6246C11.2892 5.01514 11.2894 5.64821 10.8989 6.03867L6.65672 10.2809C6.2662 10.6714 5.63221 10.6714 5.24168 10.2809L0.999496 6.03867C0.609029 5.6482 0.609144 5.01514 0.999496 4.6246L5.24168 0.381439ZM7.36375 4.00058C6.58272 3.21958 5.3157 3.2196 4.53465 4.00058C3.75361 4.78162 3.75363 6.04863 4.53465 6.82968C5.3157 7.61073 6.58271 7.61073 7.36375 6.82968C8.14474 6.04863 8.14478 4.78161 7.36375 4.00058Z"
@@ -88,14 +88,14 @@ const ProductFocus = () => {
                 height="15"
                 viewBox="0 0 17 16"
                 fill="none"
-                className="hidden sm:block"
+                className="hidden md:block"
               >
                 <path
                   d="M7.82762 0.624268C8.21813 0.233762 8.85116 0.233799 9.24168 0.624268L16.0698 7.45239C16.4603 7.84292 16.4603 8.47593 16.0698 8.86646L9.24168 15.6946C8.85116 16.0851 8.21815 16.0851 7.82762 15.6946L0.999496 8.86646C0.609028 8.47593 0.608991 7.8429 0.999496 7.45239L7.82762 0.624268ZM10.6567 5.96606C9.48518 4.79452 7.58514 4.79458 6.41356 5.96606L6.20946 6.17017C5.03788 7.34174 5.03788 9.24176 6.20946 10.4133L6.41356 10.6174C7.58513 11.789 9.48515 11.789 10.6567 10.6174L10.8608 10.4133C12.0323 9.24175 12.0324 7.34171 10.8608 6.17017L10.6567 5.96606Z"
                   fill="#F5542A"
                 />
               </svg>
-              <p className="font-micro text-[26px] sm:text-[32px] leading-3">
+              <p className="font-micro text-[26px] md:text-[32px] leading-3">
                 {product.price.toFixed(0)}
               </p>
             </div>
@@ -103,43 +103,43 @@ const ProductFocus = () => {
 
           {/* Rating and on sale */}
           <div className="w-fit h-full flex flex-col justify-between">
-            <ul className="flex items-center justify-center gap-1 pb-3 sm:pb-4">
+            <ul className="flex items-center justify-center gap-1 pb-3 md:pb-4">
               {Array.from({ length: 5 }, (_, index) => (
                 <li key={index}>
-                  <div className="w-[10px] h-[10px] sm:w-3 sm:h-3 bg-accent rounded-full flex items-center justify-center">
-                    <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-primary rounded-full z-10"></div>
+                  <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent rounded-full flex items-center justify-center">
+                    <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="w-full">
-              <p className="text-[6px] sm:text-[8px] text-center font-inter font-bold uppercase bg-primary text-secondary p-[2px] w-full tracking-[0.1rem]">
+              <p className="text-[6px] md:text-[8px] text-center font-inter font-bold uppercase bg-primary text-secondary p-[2px] w-full tracking-[0.1rem]">
                 On sale
               </p>
             </div>
           </div>
         </div>
-        <p className="text-[8px] sm:text-[10px] text-left font-inter font-normal uppercase w-full tracking-[0.075rem]">
+        <p className="text-[8px] md:text-[10px] text-left font-inter font-normal uppercase w-full tracking-[0.075rem]">
           {product.description}
         </p>
         {/* Reviews */}
-        <div className="w-[calc(100%-24px)] sm:w-full h-auto flex flex-col gap-1 sm:gap-2 absolute sm:static bottom-3 sm:bottom-auto">
-          <h3 className="text-[32px] sm:text-[40px] font-micro leading-8 text-primary">
+        <div className="w-[calc(100%-24px)] md:w-full h-auto flex flex-col gap-1 md:gap-2 absolute md:static bottom-3 md:bottom-auto">
+          <h3 className="text-[32px] md:text-[40px] font-micro leading-8 text-primary">
             Reviews
           </h3>
           <div className="w-full h-auto flex flex-row gap-2">
-            <div className="w-full h-auto flex flex-col gap-1 justify-center sm:justify-normal">
+            <div className="w-full h-auto flex flex-col gap-1 justify-center md:justify-normal">
               {product.reviews.map((review) => (
                 <div key={review.id}>
-                  <p className="text-[8px] sm:text-[10px] font-inter font-normal uppercase">
+                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
                     <span className="text-primary">Username: </span>"
                     {review.username}"
                   </p>
-                  <p className="text-[8px] sm:text-[10px] font-inter font-normal uppercase">
+                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
                     <span className="text-primary">Rating: </span>
                     {review.rating}
                   </p>
-                  <p className="text-[8px] sm:text-[10px] font-inter font-normal uppercase">
+                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
                     <span className="text-primary">Description: </span>"
                     {review.description}"
                   </p>
@@ -182,8 +182,8 @@ const ProductFocus = () => {
       </div>
 
       {/* Buttons */}
-      <div className="absolute bottom-[-21px] sm:bottom-[-26px] right-3 sm:right-4 -z-10">
-        <div className="flex flex-row gap-1 sm:gap-2">
+      <div className="absolute bottom-[-21px] md:bottom-[-26px] right-3 md:right-4 -z-10">
+        <div className="flex flex-row gap-1 md:gap-2">
           <div className="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@ const ProductFocus = () => {
               height="21"
               viewBox="0 0 127 21"
               fill="none"
-              className="block sm:hidden"
+              className="block md:hidden"
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
@@ -204,7 +204,7 @@ const ProductFocus = () => {
               height="26"
               viewBox="0 0 157 26"
               fill="none"
-              className="hidden sm:block rotate-180"
+              className="hidden md:block rotate-180"
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
@@ -212,7 +212,7 @@ const ProductFocus = () => {
               />
             </svg>
 
-            <button className="absolute transform -translate-y-5 sm:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] sm:text-[10px] p-1 text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+            <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
               Add to Cart
             </button>
           </div>
@@ -223,7 +223,7 @@ const ProductFocus = () => {
               height="21"
               viewBox="0 0 127 21"
               fill="none"
-              className="block sm:hidden"
+              className="block md:hidden"
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
@@ -236,14 +236,14 @@ const ProductFocus = () => {
               height="26"
               viewBox="0 0 157 26"
               fill="none"
-              className="hidden sm:block rotate-180"
+              className="hidden md:block rotate-180"
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
                 fill="#EBEBEB"
               />
             </svg>
-            <button className="absolute transform -translate-y-5 sm:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] sm:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+            <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
               <div className="flex items-center justify-center gap-1">
                 <p>Favourite</p>
                 <StarFourIcon
