@@ -10,13 +10,10 @@ function Contact() {
         <div className="flex flex-col gap-5 md:gap-16 w-full mt-8 md:mt-0">
           <div className="flex flex-col md:flex-row md:justify-between items-center md:items-end">
             <h1
-              className="text-[100px] md:text-[128px] font-bold text-primary leading-[10px] md:leading-[70px] uppercase font-micro"
+              className="text-[100px] md:text-[128px] font-bold text-primary leading-[10px] md:leading-[70px] uppercase font-micro w-1/2"
               aria-label="Contact"
             >
-              <span className="hidden md:inline">
-                Con-<br></br>tact
-              </span>
-              <span className="md:hidden">Contact</span>
+              Con&shy;tact
             </h1>
             <p className="bodytext text-secondary dark:text-accent text-center md:text-right w-[260px] md:w-[40%]">
               <span className="hidden md:block">

@@ -16,7 +16,7 @@ function NameNav() {
 
         {/* Cart */}
         <li>
-          <Link to="/products" className="navLink">
+          <Link to="/success" className="navLink">
             <ShoppingCart size={28} className="md:hidden" />
             <span className="hidden md:inline">Cart</span>
           </Link>

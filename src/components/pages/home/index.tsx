@@ -33,7 +33,7 @@ function Home() {
               className="text-[128px] font-bold text-primary leading-[70px] uppercase font-micro"
               aria-label="Welcome"
             >
-              Wel-<br></br>come
+              Wel&shy;come
             </h1>
             <p className="bodytext text-secondary w-40">
               What are you looking for today?
