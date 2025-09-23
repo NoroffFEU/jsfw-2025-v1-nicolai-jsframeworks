@@ -16,7 +16,7 @@ function ScrollNav() {
       <li>
         <Link
           className="block h-2 w-2 bg-primary rounded-full"
-          to="/products"
+          to="/cart"
         ></Link>
       </li>
       <li className="h-1 w-1 bg-primary rounded-full"></li>
