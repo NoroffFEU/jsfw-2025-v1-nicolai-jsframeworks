@@ -25,7 +25,7 @@ function ScrollNav() {
       <li>
         <Link
           className="block h-2 w-2 bg-primary rounded-full cursor-pointer"
-          to="/product"
+          to="/contact"
         ></Link>
       </li>
     </ul>
