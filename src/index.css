@@ -15,4 +15,12 @@ body {
   .svg-theme {
     @apply fill-secondary dark:fill-accent transition-colors duration-500;
   }
+
+  .bodytext {
+    @apply text-[12px] md:text-[14px] leading-4 font-inter font-medium uppercase tracking-[0.2rem] transition-colors duration-500;
+  }
+
+  .input {
+    @apply bodytext outline outline-1 outline-primary text-primary placeholder:text-primary rounded-lg p-4 bg-[rgba(235,235,235,0.1)] backdrop-blur-md transition-colors duration-500;
+  }
 }
