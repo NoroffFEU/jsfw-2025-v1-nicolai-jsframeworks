@@ -4,57 +4,29 @@ import { Cow, ShoppingCart, Question } from "@phosphor-icons/react";
 
 function NameNav() {
   return (
-    <div className="absolute top-2 md:top-6 left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
-      <ul className="hidden md:flex gap-16">
+    <div className="absolute top-2 md:top-7 left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
+      <ul className="flex gap-7 md:gap-16">
+        {/* Products */}
         <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/"
-          >
-            Products
+          <Link to="/" className="navLink">
+            <Cow size={28} className="md:hidden" />
+            <span className="hidden md:inline">Products</span>
           </Link>
         </li>
+
+        {/* Cart */}
         <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/products"
-          >
-            Cart
+          <Link to="/products" className="navLink">
+            <ShoppingCart size={28} className="md:hidden" />
+            <span className="hidden md:inline">Cart</span>
           </Link>
         </li>
+
+        {/* Contact */}
         <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/product"
-          >
-            Contact
-          </Link>
-        </li>
-      </ul>
-      {/* Mobile */}
-      <ul className="flex md:hidden gap-7">
-        <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/"
-          >
-            <Cow size={28} />
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/products"
-          >
-            <ShoppingCart size={28} />
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-300"
-            to="/product"
-          >
-            <Question size={28} />
+          <Link to="/contact" className="navLink">
+            <Question size={28} className="md:hidden" />
+            <span className="hidden md:inline">Contact</span>
           </Link>
         </li>
       </ul>

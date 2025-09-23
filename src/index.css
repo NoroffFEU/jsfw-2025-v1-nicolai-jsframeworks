@@ -21,6 +21,10 @@ body {
   }
 
   .input {
-    @apply bodytext outline outline-1 outline-primary text-primary placeholder:text-primary rounded-lg p-4 bg-[rgba(235,235,235,0.1)] backdrop-blur-md transition-colors duration-500;
+    @apply bodytext outline outline-1 outline-primary text-primary placeholder:text-primary rounded-lg p-4 bg-[rgba(0,0,0,0.05)] dark:bg-[rgba(235,235,235,0.05)] backdrop-blur-md transition-colors duration-500;
+  }
+
+  .navLink {
+    @apply flex items-center text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium hover:text-accent dark:hover:text-secondary hover:font-bold tracking-[0.1rem] transition-all duration-500;
   }
 }
