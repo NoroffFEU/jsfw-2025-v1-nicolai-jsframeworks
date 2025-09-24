@@ -44,7 +44,7 @@ const product = {
 
 function ProductItem() {
   return (
-    <div className="relative w-[282px] h-auto md:w-[328px] aspect-square bg-gray-100/[90%] rounded-[10px] backdrop-blur p-1 flex flex-col items-center outline outline-1 outline-primary hover:scale-[102%] transition-transform duration-500">
+    <div className="relative w-[282px] h-auto md:w-[328px] aspect-square bg-gray-100/[90%] rounded-[10px] backdrop-blur p-1 flex flex-col items-center outline outline-1 outline-primary hover:scale-[102%] transition-transform !duration-500">
       {/* Image, ID */}
       <div className="relative flex flex-col items-center justify-center">
         <svg

@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <section
-      className="bg-cover bg-center w-full h-full transition-colors duration-500 flex items-center justify-center relative"
+      className="bg-cover bg-center w-full h-full flex items-center justify-center relative"
       style={{
         backgroundImage:
           "url('https://images.pexels.com/photos/7662302/pexels-photo-7662302.jpeg?_gl=1*noa41a*_ga*NTAxNDM3OTM3LjE3NTc1MTc2MDc.*_ga_8JE65Q40S6*czE3NTg2MjEyMTEkbzQkZzEkdDE3NTg2MjE0MTkkajU4JGwwJGgw')",
@@ -26,7 +26,7 @@ function Home() {
       <div className="absolute top-0 right-0 backdrop-blur-sm w-full h-full bg-accent/15 inset-0"></div>
 
       {/* Desktop */}
-      <div className="hidden md:flex flex-row items-end justify-between md:w-[calc(50%-40px)] z-20">
+      <div className="hidden md:flex flex-row items-end justify-between p-5 md:w-[80%] xl:w-1/2 z-20">
         <section className="flex flex-col gap-8 w-[50%]">
           <div className="flex flex-col gap-2">
             <h1

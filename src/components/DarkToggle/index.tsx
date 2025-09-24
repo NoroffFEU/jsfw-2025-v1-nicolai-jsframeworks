@@ -37,9 +37,9 @@ function DarkToggle() {
         onChange={toggleDarkMode}
         className="hidden peer"
       />
-      <div className="w-16 h-5 md:w-16 md:h-6 bg-accent rounded-full flex items-center p-1 transition-colors duration-300 peer-checked:bg-primary">
+      <div className="w-16 h-5 md:w-16 md:h-6 bg-accent rounded-full flex items-center p-1 !duration-300 peer-checked:bg-primary">
         <div
-          className={`w-3 h-3 md:w-4 md:h-4 bg-secondary rounded-full transform transition-transform duration-300 ${
+          className={`w-3 h-3 md:w-4 md:h-4 bg-secondary rounded-full transform transition-transform !duration-300 ${
             checked ? "translate-x-11 md:translate-x-10" : "translate-x-0"
           }`}
         ></div>

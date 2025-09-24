@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Success() {
   return (
     <section
-      className="bg-accent dark:bg-secondary w-full h-full transition-colors duration-500 flex items-center justify-center "
+      className="bg-accent dark:bg-secondary w-full h-full   flex items-center justify-center "
       aria-label="Success section"
     >
       <div className="flex flex-row items-end justify-between w-full p-5 md:w-1/2 z-20">
@@ -39,7 +39,7 @@ function Success() {
             <br></br>
             <Link
               to="/products"
-              className="underline text-primary hover:text-accent transition-colors duration-500"
+              className="underline text-primary hover:text-accent  "
             >
               Back to products.
             </Link>
