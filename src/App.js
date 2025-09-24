@@ -9,7 +9,7 @@ import Contact from "./components/pages/Contact";
 function App() {
   return (
     <div>
-      <div className="bg-secondary dark:bg-accent min-h-screen overflow-hidden transition-colors duration-500">
+      <div className="bg-secondary dark:bg-accent min-h-screen overflow-hidden  ">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

@@ -10,7 +10,7 @@ function Header() {
       <nav>
         <Link
           to="/"
-          className="uppercase font-iceland text-xl tracking-[0.4rem] md:tracking-[0.75rem] w-fit text-primary md:text-accent md:dark:text-secondary md:-rotate-90 absolute md:left-9 md:top-1/2 transform md:-translate-x-1/2 z-10 md:-translate-y-1/2 top-[52px] left-1/2 -translate-x-1/2 pointer-events-auto transition-colors duration-500"
+          className="uppercase font-iceland text-xl tracking-[0.4rem] md:tracking-[0.75rem] w-fit text-primary md:text-accent md:dark:text-secondary md:-rotate-90 absolute md:left-9 md:top-1/2 transform md:-translate-x-1/2 z-10 md:-translate-y-1/2 top-[52px] left-1/2 -translate-x-1/2 pointer-events-auto  "
         >
           A.Warehouse
         </Link>
