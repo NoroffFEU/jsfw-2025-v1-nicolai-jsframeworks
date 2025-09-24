@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/pages/Home";
+import Products from "./components/pages/Products";
 import Cart from "./components/pages/Cart";
 import Success from "./components/pages/Success";
 import Contact from "./components/pages/Contact";
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="products" element={<Products />} />
             <Route path="cart" element={<Cart />} />
             <Route path="success" element={<Success />} />
             <Route path="contact" element={<Contact />} />

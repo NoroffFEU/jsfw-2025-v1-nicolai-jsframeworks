@@ -75,7 +75,7 @@ function NameNav() {
       <ul className="flex gap-7 md:gap-16">
         {/* Products */}
         <li>
-          <Link to="/" className="navLink">
+          <Link to="/products" className="navLink">
             <Cow size={28} className="md:hidden" />
             <span className="hidden md:inline">Products</span>
           </Link>
@@ -87,7 +87,11 @@ function NameNav() {
             <ShoppingCart size={28} className="md:hidden" />
             <span className="hidden md:inline">Cart</span>
           </Link>
-          {products.length > 0 ? <span className="absolute top-[-2px] -right-1 md:top-0 md:-right-6 text-xs bg-primary text-accent rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center font-inter font-bold">{products.length}</span> : null}
+          {products.length > 0 ? (
+            <span className="absolute top-[-2px] -right-1 md:top-0 md:-right-6 text-xs bg-primary text-secondary dark:text-accent rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center font-inter font-bold">
+              {products.length}
+            </span>
+          ) : null}
         </li>
 
         {/* Contact */}
