@@ -158,11 +158,11 @@ function Cart() {
           </div>
         </div>
         {/* Total */}
-        <div className="input !px-0 w-full md:w-[calc(50%-20px)] grid grid-cols-2 md:grid-cols-[1fr_2fr] xl:grid-cols-3 gap-5">
+        <div className="input !px-0 w-full md:w-[calc(50%-20px)] grid grid-cols-2 md:grid-cols-3 gap-5">
           <p className="font-micro text-3xl leading-[50%] m-auto">
             {totalItems}
           </p>
-          <div className="flex items-center gap-1 xl:col-start-3 m-auto">
+          <div className="flex items-center gap-1 md:col-start-3 m-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
