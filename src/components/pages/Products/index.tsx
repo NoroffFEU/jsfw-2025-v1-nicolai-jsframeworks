@@ -124,7 +124,7 @@ function Products() {
           </div>
         </form>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full md:w-[80%] xl:w-1/2 px-3 pb-5">
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-12 w-full md:w-[80%] xl:w-1/2 px-3 pb-5">
         {products.length > 0 ? (
           products.map((product) => (
             <ProductItem key={product.id} {...product} />

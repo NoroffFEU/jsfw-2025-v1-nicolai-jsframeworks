@@ -46,7 +46,7 @@ function Home() {
             </label>
             <input
               type="text"
-              className="input w-[calc(100%-20px)] z-40 relative"
+              className="input !bg-[rgba(0,0,0,0.05)] w-[calc(100%-20px)] z-40 relative"
               name="search"
               id="search-input"
               placeholder={rotatingSearchTerm()}

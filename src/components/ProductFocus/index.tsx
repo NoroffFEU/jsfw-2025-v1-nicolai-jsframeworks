@@ -1,72 +1,59 @@
 import React from "react";
 import { StarFourIcon } from "@phosphor-icons/react";
 
-// interface IProduct {
-//   id: string;
-//   title: string;
-//   description: string;
-//   price: number;
-//   discountedPrice: number;
-//   image: {
-//     url: string;
-//     alt: string;
-//   };
-//   rating: number;
-//   tags: string[];
-//   reviews: {
-//     id: string;
-//     username: string;
-//     rating: number;
-//     description: string;
-//   }[];
-// }
-
-const product = {
-  id: "159fdd2f-2b12-46de-9654-d9139525ba87",
-  title: "Gold headphones",
-  description: "Professional headphones with gold trim.",
-  price: 449.99,
-  discountedPrice: 382.49,
+interface IProduct {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  discountedPrice: number;
   image: {
-    url: "https://sw6.elbenwald.de/media/67/ed/b3/1703288898/E1080370_3.jpg",
-    alt: "Gold headphones laying on a white background",
-  },
-  rating: 4,
-  tags: ["headphones"],
-  reviews: [
-    {
-      id: "88e11191-d2e5-4bfb-9bcb-d7e158284657",
-      username: "Michael J.",
-      rating: 4,
-      description:
-        "Good sound quality. With more to say aswell. Review can be longer.",
-    },
-  ],
-};
+    url: string;
+    alt: string;
+  };
+  rating: number;
+  tags: string[];
+  reviews: {
+    id: string;
+    username: string;
+    rating: number;
+    description: string;
+  }[];
+}
 
 const starIconSize = window.innerWidth < 640 ? 12 : 14;
 
-const ProductFocus = () => {
+const ProductFocus = ({
+  id,
+  title,
+  description,
+  price,
+  discountedPrice,
+  image,
+  rating,
+  tags,
+  reviews,
+}: IProduct) => {
   return (
-    <div className="relative w-fit h-auto bg-gray-100/[90%] rounded-[10px] backdrop-blur p-1 flex flex-col md:flex-row gap-7 items-center outline outline-1 outline-primary">
+    <div className="relative w-fit md:w-full h-auto bg-accent/5 dark:bg-secondary/5 rounded-[10px] backdrop-blur p-1 flex flex-col md:flex-row gap-7 items-center justify-between outline outline-1 outline-primary z-30">
       <p className="text-primary text-[8px] absolute -top-4 tracking-[0.1rem] font-inter font-bold uppercase w-full text-center">
-        {product.id}
+        {id}
       </p>
       <img
-        src={product.image.url}
-        alt={product.image.alt}
-        className="z-10 w-[274px] h-auto rounded-[8px] overflow-hidden aspect-square"
+        src={image.url}
+        alt={image.alt}
+        className="z-10 w-[282px] md:w-[calc(50%-20px)] h-auto rounded-[8px] overflow-hidden aspect-square"
       />
       {/* Info right side */}
-      <div className="p-3 md:p-4 bg-secondary z-10 w-[274px] h-auto rounded-[8px] flex flex-col items-start overflow-hidden aspect-square gap-2 md:gap-3 relative">
-        <h2 className="text-[14px] md:text-[16px] font-inter font-bold uppercase leading-4 md:leading-5 text-left tracking-[0.075rem]">
-          {product.title}
+      <div className="p-3 md:p-4 bg-secondary dark:bg-accent z-10 w-[282px] md:w-[calc(50%-20px)] h-auto rounded-[8px] flex flex-col items-start overflow-hidden aspect-square gap-2 md:gap-3 relative">
+        <h2 className="text-[14px] md:text-[16px] lg:text-[20px] font-inter font-bold uppercase leading-4 md:leading-5 text-left tracking-[0.075rem] text-accent dark:text-secondary">
+          {title}
         </h2>
         <div className="flex flex-row items-end justify-between w-full">
           {/* Tag and price */}
           <div className="w-fit h-full flex flex-col justify-between">
-            <p className="bottom-[2px] right-0 text-[6px] md:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-secondary">
-              {product.tags[0]}
+            <p className="bottom-[2px] right-0 text-[6px] md:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-accent dark:text-secondary">
+              {tags[0]}
             </p>
             <div className="flex items-center gap-1">
               <svg
@@ -95,8 +82,8 @@ const ProductFocus = () => {
                   fill="#F5542A"
                 />
               </svg>
-              <p className="font-micro text-[26px] md:text-[32px] leading-3">
-                {product.price.toFixed(0)}
+              <p className="font-micro text-[26px] md:text-[32px] lg:text-[40px] leading-3 text-accent dark:text-secondary">
+                {price.toFixed(0)}
               </p>
             </div>
           </div>
@@ -106,21 +93,25 @@ const ProductFocus = () => {
             <ul className="flex items-center justify-center gap-1 pb-3 md:pb-4">
               {Array.from({ length: 5 }, (_, index) => (
                 <li key={index}>
-                  <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent rounded-full flex items-center justify-center">
+                  <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent dark:bg-secondary rounded-full flex items-center justify-center">
                     <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="w-full">
-              <p className="text-[6px] md:text-[8px] text-center font-inter font-bold uppercase bg-primary text-secondary p-[2px] w-full tracking-[0.1rem]">
-                On sale
-              </p>
+              {discountedPrice ? (
+                <p className="text-[6px] md:text-[8px] text-center font-inter font-bold uppercase bg-primary text-accent dark:text-secondary p-[2px] w-full tracking-[0.1rem]">
+                  On sale
+                </p>
+              ) : (
+                <div className="w-full p-2"></div>
+              )}
             </div>
           </div>
         </div>
-        <p className="text-[8px] md:text-[10px] text-left font-inter font-normal uppercase w-full tracking-[0.075rem]">
-          {product.description}
+        <p className="text-[8px] md:text-[12px] xl:text-[14px] text-left font-inter font-normal uppercase w-full tracking-[0.075rem] text-accent dark:text-secondary">
+          {description}
         </p>
         {/* Reviews */}
         <div className="w-[calc(100%-24px)] md:w-full h-auto flex flex-col gap-1 md:gap-2 absolute md:static bottom-3 md:bottom-auto">
@@ -129,17 +120,20 @@ const ProductFocus = () => {
           </h3>
           <div className="w-full h-auto flex flex-row gap-2">
             <div className="w-full h-auto flex flex-col gap-1 justify-center md:justify-normal">
-              {product.reviews.map((review) => (
-                <div key={review.id}>
-                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
+              {reviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="text-[8px] md:text-[12px] xl:text-[14px] font-inter font-normal uppercase text-accent dark:text-secondary"
+                >
+                  <p>
                     <span className="text-primary">Username: </span>"
                     {review.username}"
                   </p>
-                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
+                  <p>
                     <span className="text-primary">Rating: </span>
                     {review.rating}
                   </p>
-                  <p className="text-[8px] md:text-[10px] font-inter font-normal uppercase">
+                  <p>
                     <span className="text-primary">Description: </span>"
                     {review.description}"
                   </p>
@@ -184,7 +178,7 @@ const ProductFocus = () => {
       {/* Buttons */}
       <div className="absolute bottom-[-21px] md:bottom-[-26px] right-3 md:right-4 -z-10">
         <div className="flex flex-row gap-1 md:gap-2">
-          <div className="relative">
+          <div className="relative group">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="127"
@@ -195,7 +189,7 @@ const ProductFocus = () => {
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
-                fill="#F5542A"
+                className="fill-primary group-hover:fill-secondary dark:group-hover:fill-accent"
               />
             </svg>
             <svg
@@ -208,15 +202,15 @@ const ProductFocus = () => {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                fill="#F5542A"
+                className="fill-primary group-hover:fill-secondary dark:group-hover:fill-accent"
               />
             </svg>
 
-            <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+            <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-accent dark:text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
               Add to Cart
             </button>
           </div>
-          <div className="relative">
+          <div className="relative group">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="127"
@@ -227,7 +221,7 @@ const ProductFocus = () => {
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
-                fill="#EBEBEB"
+                className="fill-secondary dark:fill-accent group-hover:fill-accent dark:group-hover:fill-secondary"
               />
             </svg>
             <svg
@@ -240,7 +234,7 @@ const ProductFocus = () => {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                fill="#EBEBEB"
+                className="fill-secondary dark:fill-accent stroke-secondary dark:stroke-accent group-hover:fill-secondary/0 dark:group-hover:fill-accent/0 group-hover:stroke-primary"
               />
             </svg>
             <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full">

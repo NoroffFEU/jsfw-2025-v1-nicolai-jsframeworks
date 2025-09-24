@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface IProduct {
   id: string;
@@ -166,9 +167,12 @@ function ProductItem({
             />
           </svg>
 
-          <button className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+          <Link
+            to={`/product/${id}`}
+            className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/3 text-[8px] lg:text-[10px] p-1 text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+          >
             View product
-          </button>
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-[-21px] lg:bottom-[-26px] right-3 lg:right-2 -z-20">
