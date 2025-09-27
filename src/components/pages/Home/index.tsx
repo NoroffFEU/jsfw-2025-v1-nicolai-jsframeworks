@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react";
-
-const searchTerm = [
-  "Space suite",
-  "Cow",
-  "Uranium",
-  "UFO sticker",
-  "Camouflage",
-];
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  function rotatingSearchTerm() {
-    return searchTerm[0];
-  }
+  const navigate = useNavigate();
+  const searchTerms = [
+    "Space suite",
+    "Cow",
+    "Uranium",
+    "UFO sticker",
+    "Camouflage",
+    "Sheet metal",
+    "Screwdriver",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % searchTerms.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const query = search || searchTerms[currentIndex];
+    navigate(`/products?search=${encodeURIComponent(query)}`);
+  };
+
+  const rotatingSearchTerm = () => search || searchTerms[currentIndex];
 
   return (
     <section
@@ -40,16 +58,18 @@ function Home() {
             </p>
           </div>
 
-          <form action="/search" method="get" className="relative w-full">
+          <form onSubmit={handleSearch} className="relative w-full">
             <label htmlFor="search-input" className="sr-only">
               Search products
             </label>
             <input
               type="text"
-              className="input !bg-[rgba(0,0,0,0.05)] w-[calc(100%-20px)] z-40 relative"
-              name="search"
               id="search-input"
-              placeholder={rotatingSearchTerm()}
+              name="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={searchTerms[currentIndex]}
+              className="input !bg-[rgba(0,0,0,0.05)] w-[calc(100%-20px)] z-40 relative"
             />
             <button
               type="submit"
@@ -57,18 +77,6 @@ function Home() {
             >
               <MagnifyingGlass size={28} />
             </button>
-            <p
-              className="absolute top-4 left-4 bodytext text-primary"
-              aria-hidden="true"
-            >
-              {rotatingSearchTerm()}
-            </p>
-            <div
-              className="absolute top-[10px] right-7 text-primary"
-              aria-hidden="true"
-            >
-              <MagnifyingGlass size={28} />
-            </div>
           </form>
         </section>
         <aside className="bodytext text-secondary text-right w-[35%]">
@@ -101,16 +109,18 @@ function Home() {
           </aside>
         </section>
         <div className="w-[calc(100%-20px)] absolute bottom-5 left-5">
-          <form action="/search" method="get" className="relative w-full">
-            <label htmlFor="search-input" className="sr-only">
+          <form onSubmit={handleSearch} className="relative w-full">
+            <label htmlFor="search-input-mobile" className="sr-only">
               Search products
             </label>
             <input
               type="text"
-              className="input w-[calc(100%-20px)] z-40 relative"
+              id="search-input-mobile"
               name="search"
-              id="search-input"
-              placeholder={rotatingSearchTerm()}
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={searchTerms[currentIndex]}
+              className="input w-[calc(100%-20px)] z-40 relative"
             />
             <button
               type="submit"
@@ -118,18 +128,6 @@ function Home() {
             >
               <MagnifyingGlass size={28} />
             </button>
-            <p
-              className="absolute top-4 left-4 bodytext text-primary"
-              aria-hidden="true"
-            >
-              {rotatingSearchTerm()}
-            </p>
-            <div
-              className="absolute top-[10px] right-7 text-primary"
-              aria-hidden="true"
-            >
-              <MagnifyingGlass size={28} />
-            </div>
           </form>
         </div>
       </div>

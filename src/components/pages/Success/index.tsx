@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useToast } from "../../ToastContext";
 
 function Success() {
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    const toastShown = sessionStorage.getItem("successToastShown");
+    if (toastShown) return;
+    showToast("Your order was successful!", "success");
+    sessionStorage.setItem("successToastShown", "true");
+  }, [showToast]);
+
   return (
     <section
       className="bg-accent dark:bg-secondary w-full h-full   flex items-center justify-center "
@@ -39,7 +49,7 @@ function Success() {
             <br></br>
             <Link
               to="/products"
-              className="underline text-primary hover:text-accent  "
+              className="underline text-primary hover:text-accent"
             >
               Back to products.
             </Link>
