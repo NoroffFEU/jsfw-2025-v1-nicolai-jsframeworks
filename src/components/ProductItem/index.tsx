@@ -1,34 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../CartContext";
+import { IProduct } from "../typescript";
 
-interface IProduct {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  discountedPrice: number;
-  image: {
-    url: string;
-    alt: string;
-  };
-  rating: number;
-  tags: string[];
-  reviews: {
-    id: string;
-    username: string;
-    rating: number;
-    description: string;
-  }[];
+interface ProductItemProps {
+  product: IProduct;
 }
 
-function ProductItem({
-  id,
-  title,
-  tags,
-  price,
-  discountedPrice,
-  image,
-}: IProduct) {
+function ProductItem({ product }: ProductItemProps) {
+  const { id, title, tags, price, discountedPrice, image, rating } = product;
+  const { addToCart } = useCart();
   return (
     <li className="relative w-[282px] h-auto md:w-full aspect-square bg-accent/5 dark:bg-secondary/5 rounded-[10px] backdrop-blur p-1 flex flex-col items-center outline outline-1 outline-primary hover:scale-[102%] transition-transform justify-self-center">
       {/* Image */}
@@ -36,7 +17,7 @@ function ProductItem({
         <img
           src={image.url}
           alt={image.alt}
-          className="rounded-[8px] h-auto w-full aspect-square object-cover object-top"
+          className="rounded-[8px] h-auto w-full aspect-square object-cover object-center"
         />
       </div>
 
@@ -57,14 +38,16 @@ function ProductItem({
             {Array.from({ length: 5 }, (_, index) => (
               <li key={index}>
                 <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent dark:bg-secondary rounded-full flex items-center justify-center">
-                  <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
+                  {index < rating && (
+                    <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
+                  )}
                 </div>
               </li>
             ))}
           </ul>
         </div>
         <p className="absolute bottom-[2px] right-0 text-[6px] md:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-secondary">
-          {tags[0]}
+          {tags.join("   |   ")}
         </p>
       </div>
 
@@ -203,7 +186,10 @@ function ProductItem({
               className="fill-secondary dark:fill-accent"
             />
           </svg>
-          <button className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+          <button
+            className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+            onClick={() => addToCart(product)}
+          >
             Add to Cart
           </button>
         </div>

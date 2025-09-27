@@ -1,89 +1,24 @@
-import React from "react";
+import React, { useMemo } from "react";
 import CartItem from "../../CartItem";
-
-const products = [
-  {
-    id: "159fdd2f-2b12-46de-9654-d9139525ba87",
-    title: "Gold headphones",
-    description: "Professional headphones with gold trim.",
-    price: 449.99,
-    discountedPrice: 0,
-    image: {
-      url: "https://sw6.elbenwald.de/media/67/ed/b3/1703288898/E1080370_3.jpg",
-      alt: "Gold headphones laying on a white background",
-    },
-    rating: 4,
-    tags: ["headphones"],
-    reviews: [
-      {
-        id: "88e11191-d2e5-4bfb-9bcb-d7e158284657",
-        username: "Michael J.",
-        rating: 4,
-        description: "Good sound quality.",
-      },
-    ],
-  },
-  {
-    id: "109566af-c5c2-4f87-86cb-76f36fb8d378",
-    title: "Vanilla Perfume",
-    description:
-      "Women's perfume that smells a warm and sweet, with nuances of wood and jasmine.",
-    price: 2599.99,
-    discountedPrice: 2079.99,
-    image: {
-      url: "https://sw6.elbenwald.de/media/67/ed/b3/1703288898/E1080370_3.jpg",
-      alt: "White perfume bottle on a yellow background",
-    },
-    rating: 5,
-    tags: ["perfume", "beauty"],
-    reviews: [
-      {
-        id: "90a61e3e-355a-42e4-b038-d91dcad33c20",
-        username: "Jim N.",
-        rating: 5,
-        description: "My partner loves it, its her favourite.",
-      },
-    ],
-  },
-  {
-    id: "1e3f6b6b-3b2b-4b0b-8b3b-3b6b6b1e3f6b",
-    title: "Sneakers",
-    description: "Comfortable and stylish sneakers.",
-    price: 499.99,
-    discountedPrice: 399.99,
-    image: {
-      url: "https://sw6.elbenwald.de/media/67/ed/b3/1703288898/E1080370_3.jpg",
-      alt: "Black sneakers on a white background",
-    },
-    rating: 4,
-    tags: ["sneakers"],
-    reviews: [
-      {
-        id: "90a61e3e-355a-42e4-b038-d91dcad33c20",
-        username: "Jim N.",
-        rating: 5,
-        description: "My partner loves it, its her favourite.",
-      },
-    ],
-  },
-];
-
-// Update to show actual totals, between discounted and non-discounted prices.
-const totalPrice = products
-  .reduce((acc, product) => acc + product.price, 0)
-  .toFixed(0);
-const totalItems = products.reduce((acc, product) => acc + 1, 0);
+import { useCart } from "../../CartContext";
+import { IProduct } from "../../typescript.tsx";
 
 function Cart() {
   function handleCheckout() {
     window.location.href = "/success";
     // Update to clear out cart
-    localStorage.clear();
+    clearCart();
+    sessionStorage.clear();
   }
-  function clearCart() {
-    localStorage.clear();
-    window.location.href = "/";
-  }
+  const { cart, clearCart, totalQuantity } = useCart();
+
+  const totalPrice = useMemo(() => {
+    return cart.reduce((total, item: IProduct) => {
+      const priceToUse = item.discountedPrice ?? item.price;
+      return total + priceToUse * item.quantity;
+    }, 0);
+  }, [cart]);
+
   return (
     <section
       className="bg-accent dark:bg-secondary w-full h-full flex flex-col items-center pt-32 md:py-20 gap-5 overflow-y-scroll"
@@ -104,8 +39,10 @@ function Cart() {
         <p className="mx-auto">Total</p>
       </div>
       <ul className="flex flex-col gap-3 w-full md:w-[80%] xl:w-1/2 px-5">
-        {products.length > 0 ? (
-          products.map((product) => <CartItem key={product.id} {...product} />)
+        {cart.length > 0 ? (
+          cart.map((product: IProduct) => (
+            <CartItem key={product.id} {...product} />
+          ))
         ) : (
           <p className="bodytext !text-base text-center p-10">
             Your cart is empty.
@@ -160,7 +97,7 @@ function Cart() {
         {/* Total */}
         <div className="input !px-0 w-full md:w-[calc(50%-20px)] grid grid-cols-2 md:grid-cols-3 gap-5">
           <p className="font-micro text-3xl leading-[50%] m-auto">
-            {totalItems}
+            {totalQuantity > 0 ? `${totalQuantity}` : 0}
           </p>
           <div className="flex items-center gap-1 md:col-start-3 m-auto">
             <svg
@@ -190,7 +127,7 @@ function Cart() {
               />
             </svg>
             <p className="font-micro text-3xl leading-[50%] tracking-normal">
-              {totalPrice}
+              {totalPrice.toFixed(0)}
             </p>
           </div>
         </div>

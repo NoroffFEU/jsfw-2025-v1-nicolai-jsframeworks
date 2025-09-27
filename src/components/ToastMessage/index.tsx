@@ -1,38 +1,28 @@
 import React from "react";
 
-// interface IMessage {
-//   errors: { message: string }[];
-//   status: string;
-//   statusCode: number;
-// }
+interface ToastMessageProps {
+  message: string;
+  type: "success" | "error" | "warning";
+}
 
-const message = {
-  errors: [
-    {
-      message: "No listing with such ID",
-    },
-  ],
-  status: "Not Found",
-  statusCode: 404,
+const colors = {
+  success: "#00DFA0",
+  error: "#F5542A",
+  warning: "#FFC300",
 };
 
-const messageColor =
-  message.statusCode === 404
-    ? "#F5542A"
-    : message.statusCode === 500
-    ? "#FFC300"
-    : "#00DFA0";
+const labels = {
+  success: "Success",
+  error: "Error",
+  warning: "Warning",
+};
 
-const messageType =
-  message.statusCode === 404
-    ? "Error"
-    : message.statusCode === 500
-    ? "Warning"
-    : "Success";
+const ToastMessage: React.FC<ToastMessageProps> = ({ message, type }) => {
+  const messageColor = colors[type];
+  const messageLabel = labels[type];
 
-const ToastMessage = () => {
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div>
       <div className="relative">
         {/* Stroke */}
         <svg
@@ -75,14 +65,14 @@ const ToastMessage = () => {
         </div>
 
         {/* Message */}
-        <p className="absolute top-1/2 left-12 -translate-y-1/2 text-[10px] font-inter font-medium tracking-[0.075rem]">
+        <p className="absolute top-1/2 left-12 -translate-y-1/2 text-[10px] font-inter font-medium tracking-[0.075rem] pr-2">
           <span
             className="uppercase font-bold tracking-[0.1rem]"
             style={{ color: messageColor }}
           >
-            {messageType}
+            {messageLabel}
           </span>
-          <br /> {message.errors[0].message}
+          <br /> {message}
         </p>
 
         {/* Outeline */}
@@ -99,7 +89,7 @@ const ToastMessage = () => {
           <path
             d="M279.777 16.7697C280.527 17.5199 280.948 18.5373 280.948 19.5981V52.343C280.948 53.4039 280.527 54.4213 279.777 55.1715L265.149 69.799C264.399 70.5492 263.382 70.9706 262.321 70.9706H13.9482C6.76865 70.9705 0.948242 65.1502 0.948242 57.9706V36.5688C0.948242 35.508 1.36967 34.4906 2.11982 33.7404L33.7181 2.14215C34.4682 1.39201 35.4856 0.970581 36.5465 0.970581H262.321C263.382 0.970581 264.399 1.39201 265.149 2.14215L279.777 16.7697Z"
             fill="#F8F8F8"
-            fill-opacity="0.2"
+            fill-opacity="0.75"
           />
           <path
             d="M13.9482 70.9706L13.9482 71.9706H13.9482V70.9706ZM265.149 69.799L265.856 70.5061L265.149 69.799ZM33.7181 2.14215L34.4252 2.84926L33.7181 2.14215ZM279.777 55.1715L279.07 54.4643L279.777 55.1715ZM2.11982 33.7404L2.82692 34.4475L2.11982 33.7404ZM280.948 19.5981H279.948V52.343H280.948H281.948V19.5981H280.948ZM279.777 55.1715L279.07 54.4643L264.442 69.0919L265.149 69.799L265.856 70.5061L280.484 55.8786L279.777 55.1715ZM262.321 70.9706V69.9706H13.9482V70.9706V71.9706H262.321V70.9706ZM13.9482 70.9706L13.9483 69.9706C7.32092 69.9705 1.94824 64.5979 1.94824 57.9706H0.948242H-0.0517578C-0.0517578 65.7025 6.21638 71.9704 13.9482 71.9706L13.9482 70.9706ZM0.948242 57.9706H1.94824V36.5688H0.948242H-0.0517578V57.9706H0.948242ZM2.11982 33.7404L2.82692 34.4475L34.4252 2.84926L33.7181 2.14215L33.011 1.43505L1.41271 33.0333L2.11982 33.7404ZM36.5465 0.970581V1.97058H262.321V0.970581V-0.0294189H36.5465V0.970581ZM265.149 2.14215L264.442 2.84926L279.07 17.4768L279.777 16.7697L280.484 16.0626L265.856 1.43505L265.149 2.14215ZM262.321 0.970581V1.97058C263.116 1.97058 263.879 2.28665 264.442 2.84926L265.149 2.14215L265.856 1.43505C264.919 0.497364 263.647 -0.0294189 262.321 -0.0294189V0.970581ZM265.149 69.799L264.442 69.0919C263.879 69.6545 263.116 69.9706 262.321 69.9706V70.9706V71.9706C263.647 71.9706 264.919 71.4438 265.856 70.5061L265.149 69.799ZM33.7181 2.14215L34.4252 2.84926C34.9878 2.28665 35.7509 1.97058 36.5465 1.97058V0.970581V-0.0294189C35.2204 -0.0294189 33.9487 0.497366 33.011 1.43505L33.7181 2.14215ZM280.948 52.343H279.948C279.948 53.1387 279.632 53.9017 279.07 54.4643L279.777 55.1715L280.484 55.8786C281.421 54.9409 281.948 53.6691 281.948 52.343H280.948ZM0.948242 36.5688H1.94824C1.94824 35.7732 2.26431 35.0101 2.82692 34.4475L2.11982 33.7404L1.41271 33.0333C0.475026 33.971 -0.0517578 35.2428 -0.0517578 36.5688H0.948242ZM280.948 19.5981H281.948C281.948 18.2721 281.421 17.0003 280.484 16.0626L279.777 16.7697L279.07 17.4768C279.632 18.0394 279.948 18.8025 279.948 19.5981H280.948Z"
