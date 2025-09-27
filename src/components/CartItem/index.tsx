@@ -1,22 +1,28 @@
+import { useCart } from "../CartContext";
+
 interface IProduct {
   id: string;
   title: string;
   price: number;
   discountedPrice: number;
+  quantity: number;
   image: {
     url: string;
     alt: string;
   };
 }
 
-const productQunantity = 2;
+function CartItem({ title, price, discountedPrice, image, id }: IProduct) {
+  const { cart, removeFromCart, updateQuantity } = useCart();
 
-function CartItem({ title, price, discountedPrice, image }: IProduct) {
+  const item = cart.find((item) => item.id === id);
+  const quantity = item ? item.quantity : 0;
+
   return (
     <li
       className="relative"
-      aria-label={`Cart item: ${title}, quantity ${productQunantity}, total ${
-        (discountedPrice > 0 ? discountedPrice : price) * productQunantity
+      aria-label={`Cart item: ${title}, quantity ${quantity}, total ${
+        (discountedPrice > 0 ? discountedPrice : price) * quantity
       }`}
     >
       <div className="grid sm:grid-cols-[1fr_7fr_1fr] md:grid-cols-[50%_1fr_1fr_1fr] gap-5">
@@ -51,12 +57,13 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
                 <button
                   className="px-2 font-semibold font-inter text-2xl text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 dark:group-hover:text-accent group-hover:text-secondary !duration-300"
                   aria-label={`Decrease quantity of ${title}`}
+                  onClick={() => updateQuantity(id, -1)}
                 >
                   -
                 </button>
               </div>
               <p className="font-micro text-3xl text-secondary dark:text-accent block md:hidden">
-                {productQunantity}
+                {quantity}
               </p>
               <div className="w-8 h-8 relative group">
                 <svg
@@ -77,6 +84,7 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
                 <button
                   className="px-2 font-semibold font-inter text-2xl text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 dark:group-hover:text-accent group-hover:text-secondary !duration-300"
                   aria-label={`Increase quantity of ${title}`}
+                  onClick={() => updateQuantity(id, +1)}
                 >
                   +
                 </button>
@@ -85,6 +93,7 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
                 <button
                   className="px-2 font-semibold font-inter text-2xl dark:text-secondary text-accent absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 !duration-300"
                   aria-label={`Remove ${title} from cart`}
+                  onClick={() => removeFromCart(id)}
                 >
                   <span aria-hidden="true">+</span>
                 </button>
@@ -96,12 +105,12 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
                   className="line-through decoration-primary"
                   aria-hidden="true"
                 >
-                  {(price * productQunantity).toFixed(0)}
+                  {(price * quantity).toFixed(0)}
                 </p>
                 <span className="sr-only">
                   Total discounted item price {discountedPrice.toFixed(0)}
                 </span>
-                <p>{(discountedPrice * productQunantity).toFixed(0)}</p>
+                <p>{(discountedPrice * quantity).toFixed(0)}</p>
               </div>
             ) : (
               <div>
@@ -109,14 +118,14 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
                   Total item price {price.toFixed(0)}
                 </span>
                 <p className="block md:hidden font-micro leading-7 text-3xl text-secondary dark:text-accent">
-                  {(price * productQunantity).toFixed(0)}
+                  {(price * quantity).toFixed(0)}
                 </p>
               </div>
             )}
           </div>
         </div>
         <p className="m-auto font-micro text-3xl text-secondary dark:text-accent hidden md:block">
-          {productQunantity}
+          {quantity}
         </p>
         {discountedPrice > 0 ? (
           <div className="hidden md:flex flex-col leading-5 m-auto font-micro text-3xl text-secondary dark:text-accent">
@@ -141,18 +150,18 @@ function CartItem({ title, price, discountedPrice, image }: IProduct) {
         {discountedPrice > 0 ? (
           <div className="hidden md:flex flex-col items-center leading-5 m-auto font-micro text-3xl text-secondary dark:text-accent">
             <p className="line-through decoration-primary">
-              {(price * productQunantity).toFixed(0)}
+              {(price * quantity).toFixed(0)}
             </p>
             <span className="sr-only">
               Total discounted item price {discountedPrice.toFixed(0)}
             </span>
-            <p>{(discountedPrice * productQunantity).toFixed(0)}</p>
+            <p>{(discountedPrice * quantity).toFixed(0)}</p>
           </div>
         ) : (
           <div className="hidden md:block m-auto">
             <span className="sr-only">Total item price {price.toFixed(0)}</span>
             <p className="font-micro text-3xl text-secondary dark:text-accent">
-              {(price * productQunantity).toFixed(0)}
+              {(price * quantity).toFixed(0)}
             </p>
           </div>
         )}

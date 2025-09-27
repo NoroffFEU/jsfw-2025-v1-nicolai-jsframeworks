@@ -1,39 +1,27 @@
 import React from "react";
 import { StarFourIcon } from "@phosphor-icons/react";
-
-interface IProduct {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  discountedPrice: number;
-  image: {
-    url: string;
-    alt: string;
-  };
-  rating: number;
-  tags: string[];
-  reviews: {
-    id: string;
-    username: string;
-    rating: number;
-    description: string;
-  }[];
-}
+import { IProduct } from "../typescript.tsx";
+import { useCart } from "../CartContext";
 
 const starIconSize = window.innerWidth < 640 ? 12 : 14;
 
-const ProductFocus = ({
-  id,
-  title,
-  description,
-  price,
-  discountedPrice,
-  image,
-  rating,
-  tags,
-  reviews,
-}: IProduct) => {
+interface ProductFocusProps {
+  product: IProduct;
+}
+
+const ProductFocus = ({ product }: ProductFocusProps) => {
+  const {
+    id,
+    title,
+    tags,
+    price,
+    discountedPrice,
+    image,
+    reviews,
+    description,
+    rating,
+  } = product;
+  const { addToCart } = useCart();
   return (
     <div className="relative w-fit md:w-full h-auto bg-accent/5 dark:bg-secondary/5 rounded-[10px] backdrop-blur p-1 flex flex-col md:flex-row gap-7 items-center justify-between outline outline-1 outline-primary z-30">
       <p className="text-primary text-[8px] absolute -top-4 tracking-[0.1rem] font-inter font-bold uppercase w-full text-center">
@@ -42,7 +30,7 @@ const ProductFocus = ({
       <img
         src={image.url}
         alt={image.alt}
-        className="z-10 w-[282px] md:w-[calc(50%-20px)] h-auto rounded-[8px] overflow-hidden aspect-square"
+        className="z-10 w-[282px] md:w-[calc(50%-20px)] h-auto rounded-[8px] overflow-hidden aspect-square object-cover object-center"
       />
       {/* Info right side */}
       <div className="p-3 md:p-4 bg-secondary dark:bg-accent z-10 w-[282px] md:w-[calc(50%-20px)] h-auto rounded-[8px] flex flex-col items-start overflow-hidden aspect-square gap-2 md:gap-3 relative">
@@ -53,7 +41,7 @@ const ProductFocus = ({
           {/* Tag and price */}
           <div className="w-fit h-full flex flex-col justify-between">
             <p className="bottom-[2px] right-0 text-[6px] md:text-[8px] font-inter font-bold uppercase tracking-[0.1rem] p-[2px] bg-blend-difference bg-primary text-accent dark:text-secondary">
-              {tags[0]}
+              {tags.join("   |   ")}
             </p>
             <div className="flex items-center gap-1">
               <svg
@@ -83,7 +71,9 @@ const ProductFocus = ({
                 />
               </svg>
               <p className="font-micro text-[26px] md:text-[32px] lg:text-[40px] leading-3 text-accent dark:text-secondary">
-                {price.toFixed(0)}
+                {discountedPrice
+                  ? discountedPrice.toFixed(0)
+                  : price.toFixed(0)}
               </p>
             </div>
           </div>
@@ -94,7 +84,9 @@ const ProductFocus = ({
               {Array.from({ length: 5 }, (_, index) => (
                 <li key={index}>
                   <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent dark:bg-secondary rounded-full flex items-center justify-center">
-                    <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
+                    {index < rating && (
+                      <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
+                    )}
                   </div>
                 </li>
               ))}
@@ -206,7 +198,10 @@ const ProductFocus = ({
               />
             </svg>
 
-            <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-accent dark:text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full">
+            <button
+              className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-accent dark:text-secondary font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+              onClick={() => addToCart(product)}
+            >
               Add to Cart
             </button>
           </div>

@@ -4,15 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { CartProvider } from "./components/CartContext";
+import { ToastProvider } from "./components/ToastContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+      <ToastProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </ToastProvider>
+    {/* </React.StrictMode> */}
   </BrowserRouter>
 );
 
