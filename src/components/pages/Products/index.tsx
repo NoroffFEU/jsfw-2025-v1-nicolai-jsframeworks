@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import ShowingProducts from "../../ShowingProducts";
-
-const searchTerm = [
-  "Space suite",
-  "Cow",
-  "Uranium",
-  "UFO sticker",
-  "Camouflage",
-];
+import { useLocation } from "react-router-dom";
 
 function Products() {
-  function rotatingSearchTerm() {
-    return searchTerm[0];
-  }
+  const location = useLocation();
+  const param = new URLSearchParams(location.search);
+  const initialSearch = param.get("search") || "";
+  const searchTerms = [
+    "Space suite",
+    "Cow",
+    "Uranium",
+    "UFO sticker",
+    "Camouflage",
+    "Sheet metal",
+    "Screwdriver",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % searchTerms.length);
+    }, 3000);
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
+
+  const [search, setSearch] = useState(initialSearch);
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedSearch(search), 500);
+    return () => clearTimeout(handler);
+  }, [search]);
 
   return (
     <section
@@ -36,8 +55,11 @@ function Products() {
             className="input w-full z-40 relative"
             name="search"
             id="search-input"
-            placeholder={rotatingSearchTerm()}
+            placeholder={searchTerms[currentIndex]}
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
           />
+
           <button
             type="submit"
             className="absolute top-[10px] right-3 text-primary z-50"
@@ -48,7 +70,7 @@ function Products() {
             className="absolute top-4 left-4 bodytext text-primary"
             aria-hidden="true"
           >
-            {rotatingSearchTerm()}
+            {search ? search : searchTerms[currentIndex]}
           </p>
           <div
             className="absolute top-[10px] right-3 text-primary"
@@ -58,7 +80,7 @@ function Products() {
           </div>
         </form>
       </div>
-      <ShowingProducts />
+      <ShowingProducts search={debouncedSearch} />
       <div className="flex flex-col items-end w-full md:w-[80%] xl:w-1/2 px-5"></div>
     </section>
   );

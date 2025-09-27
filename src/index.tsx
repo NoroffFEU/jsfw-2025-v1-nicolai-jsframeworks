@@ -12,13 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    {/* <React.StrictMode> */}
+    <React.StrictMode>
       <ToastProvider>
         <CartProvider>
           <App />
         </CartProvider>
       </ToastProvider>
-    {/* </React.StrictMode> */}
+    </React.StrictMode>
   </BrowserRouter>
 );
 
