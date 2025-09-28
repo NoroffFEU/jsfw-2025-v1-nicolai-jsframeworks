@@ -49,7 +49,7 @@ function Success() {
             <br></br>
             <Link
               to="/products"
-              className="underline text-primary hover:text-accent"
+              className="underline text-primary lg:hover:text-accent"
             >
               Back to products.
             </Link>

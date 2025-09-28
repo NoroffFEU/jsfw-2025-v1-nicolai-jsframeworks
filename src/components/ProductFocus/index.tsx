@@ -181,7 +181,7 @@ const ProductFocus = ({ product }: ProductFocusProps) => {
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
-                className="fill-primary group-hover:fill-secondary dark:group-hover:fill-accent"
+                className="fill-primary lg:group-hover:fill-secondary lg:dark:group-hover:fill-accent"
               />
             </svg>
             <svg
@@ -194,7 +194,7 @@ const ProductFocus = ({ product }: ProductFocusProps) => {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                className="fill-primary group-hover:fill-secondary dark:group-hover:fill-accent"
+                className="fill-primary lg:group-hover:fill-secondary lg:dark:group-hover:fill-accent"
               />
             </svg>
 
@@ -216,7 +216,7 @@ const ProductFocus = ({ product }: ProductFocusProps) => {
             >
               <path
                 d="M126.513 0.160156C124.792 0.160343 122.728 1.47704 121.959 2.24609L106.568 17.6367C104.865 19.34 102.554 20.2958 100.146 20.2959H94.4727L26.7734 20.2969C24.3664 20.2968 22.0548 19.3408 20.3516 17.6377L4.96094 2.24609C4.19186 1.47703 2.12786 0.161311 0.407227 0.161133H87.7656V0.160156H126.513Z"
-                className="fill-secondary dark:fill-accent group-hover:fill-accent dark:group-hover:fill-secondary"
+                className="fill-secondary dark:fill-accent lg:group-hover:fill-accent lg:dark:group-hover:fill-secondary"
               />
             </svg>
             <svg
@@ -229,7 +229,7 @@ const ProductFocus = ({ product }: ProductFocusProps) => {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                className="fill-secondary dark:fill-accent stroke-secondary dark:stroke-accent group-hover:fill-secondary/0 dark:group-hover:fill-accent/0 group-hover:stroke-primary"
+                className="fill-secondary dark:fill-accent stroke-secondary dark:stroke-accent lg:group-hover:fill-secondary/0 lg:dark:group-hover:fill-accent/0 lg:group-hover:stroke-primary"
               />
             </svg>
             <button className="absolute transform -translate-y-5 md:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] md:text-[10px] p-1 text-primary font-inter uppercase font-semibold tracking-[0.075rem] w-full">

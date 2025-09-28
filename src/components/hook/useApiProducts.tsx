@@ -17,7 +17,7 @@ export function useApi(url: string) {
 
         setData((prev) => (append ? [...prev, ...json.data] : json.data));
         setMeta(json.meta);
-      } catch (err) {
+      } catch (error) {
         setError(true);
       } finally {
         setLoading(false);

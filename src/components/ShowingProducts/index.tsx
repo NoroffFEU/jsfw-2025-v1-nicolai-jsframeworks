@@ -13,9 +13,12 @@ function ShowingProducts({ search }: { search: string }) {
   const [filteredData, setFilteredData] = useState<IProduct[]>([]);
   const lastProductRef = useRef<HTMLLIElement | null>(null);
 
+  const [noResultsShown, setNoResultsShown] = useState(false);
+
   useEffect(() => {
     if (!search) {
       setFilteredData(data);
+      setNoResultsShown(false); // reset guard when no search
     } else {
       const lowerSearch = search.toLowerCase();
       const filtered = data.filter((product) =>
@@ -23,11 +26,14 @@ function ShowingProducts({ search }: { search: string }) {
       );
       setFilteredData(filtered);
 
-      if (filtered.length === 0) {
+      if (filtered.length === 0 && !noResultsShown) {
         showToast("No results found for your search", "error");
+        setNoResultsShown(true);
+      } else if (filtered.length > 0 && noResultsShown) {
+        setNoResultsShown(false); // reset when results appear
       }
     }
-  }, [search, data, showToast]);
+  }, [search, data, showToast, noResultsShown]);
 
   // Infinite scroll using IntersectionObserver
   useEffect(() => {

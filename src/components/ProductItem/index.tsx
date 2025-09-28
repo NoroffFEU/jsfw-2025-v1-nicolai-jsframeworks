@@ -11,7 +11,7 @@ function ProductItem({ product }: ProductItemProps) {
   const { id, title, tags, price, discountedPrice, image, rating } = product;
   const { addToCart } = useCart();
   return (
-    <li className="relative w-[282px] h-auto md:w-full aspect-square bg-accent/5 dark:bg-secondary/5 rounded-[10px] backdrop-blur p-1 flex flex-col items-center outline outline-1 outline-primary hover:scale-[102%] transition-transform justify-self-center">
+    <div className="relative w-[282px] h-auto md:w-full aspect-square bg-accent/5 dark:bg-secondary/5 rounded-[10px] backdrop-blur p-1 flex flex-col items-center outline outline-1 outline-primary lg:hover:scale-[102%] transition-transform justify-self-center">
       {/* Image */}
       <div className="relative flex flex-col items-center justify-center">
         <img
@@ -194,7 +194,7 @@ function ProductItem({ product }: ProductItemProps) {
           </button>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
 
