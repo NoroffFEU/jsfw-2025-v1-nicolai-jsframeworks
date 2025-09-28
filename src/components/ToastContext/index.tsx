@@ -20,7 +20,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const showToast = (message: string, type: ToastType = "success") => {
-    const id = Date.now().toString();
+    const id = `${Date.now()}-${Math.random()}`;
     const toast: Toast = { id, message, type };
     setToasts((prev) => {
       const updated = [...prev, toast];

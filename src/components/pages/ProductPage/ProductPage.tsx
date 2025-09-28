@@ -20,7 +20,6 @@ function ProductPage() {
 
         setData(json.data as IProduct);
       } catch (error) {
-        console.log(error);
         setIsError(true);
       } finally {
         setIsLoading(false);

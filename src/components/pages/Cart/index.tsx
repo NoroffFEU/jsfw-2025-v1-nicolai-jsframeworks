@@ -80,13 +80,13 @@ function Cart() {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                className="stroke-primary stroke-1 fill-accent dark:fill-secondary group-hover:fill-primary  "
+                className="stroke-primary stroke-1 fill-accent dark:fill-secondary lg:group-hover:fill-primary  "
               />
             </svg>
             <button
               type="button"
               onClick={clearCart}
-              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary group-hover:text-secondary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary lg:group-hover:text-secondary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
             >
               <div className="flex items-center justify-center gap-1">
                 <p>Empty</p>
@@ -161,13 +161,13 @@ function Cart() {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                className="stroke-primary stroke-1 fill-accent dark:fill-secondary group-hover:fill-primary  "
+                className="stroke-primary stroke-1 fill-accent dark:fill-secondary lg:group-hover:fill-primary  "
               />
             </svg>
             <button
               type="button"
               onClick={clearCart}
-              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary group-hover:text-secondary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-primary lg:group-hover:text-secondary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
             >
               <div className="flex items-center justify-center gap-1">
                 <p>Empty</p>
@@ -203,14 +203,14 @@ function Cart() {
             >
               <path
                 d="M123.165 0.0578613C126.166 0.0579715 129.048 1.24908 131.171 3.37231L150.356 22.5588C151.315 23.5176 153.888 25.1584 156.033 25.1584H0.46582C2.61075 25.1583 5.18388 23.5175 6.14258 22.5588L25.3281 3.37329C27.4515 1.24996 30.3332 0.0578611 33.334 0.0578613H38.7725V0.0568848L123.165 0.0578613Z"
-                className="fill-primary group-hover:fill-accent group-hover:dark:fill-secondary stroke-1 stroke-primary  "
+                className="fill-primary lg:group-hover:fill-accent lg:group-hover:dark:fill-secondary stroke-1 stroke-primary  "
               />
             </svg>
 
             <button
               type="submit"
               onClick={handleCheckout}
-              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-secondary group-hover:text-primary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
+              className="absolute transform -translate-y-5 lg:-translate-y-6 left-1/2 -translate-x-1/2 text-[8px] lg:text-[10px] p-1 text-secondary lg:group-hover:text-primary   font-inter uppercase font-semibold tracking-[0.075rem] w-full"
             >
               Checkout
             </button>
