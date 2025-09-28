@@ -4,7 +4,6 @@ import "@testing-library/jest-dom";
 import ProductFocus from "../../../components/ProductFocus";
 import { useCart } from "../../../components/CartContext";
 
-// Mock the useCart hook
 jest.mock("../../../components/CartContext", () => ({
   useCart: jest.fn(),
 }));

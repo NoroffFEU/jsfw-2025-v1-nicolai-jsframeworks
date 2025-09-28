@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import { ToastProvider, useToast } from "../../../components/ToastContext";
 
-// Mock ToastMessage so we just check props
 jest.mock(
   "../../../components/ToastMessage",
   () =>
@@ -63,7 +62,6 @@ describe("ToastContext", () => {
 
     expect(screen.getByTestId("toast")).toHaveTextContent("Success!");
 
-    // Fast-forward 3 seconds
     act(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -82,11 +80,11 @@ describe("ToastContext", () => {
       screen.getByText("Add Toast").click();
       screen.getByText("Add Toast").click();
       screen.getByText("Add Toast").click();
-      screen.getByText("Add Toast").click(); // 4th toast
+      screen.getByText("Add Toast").click();
     });
 
     const toasts = screen.getAllByTestId("toast");
-    expect(toasts.length).toBe(3); // only last 3
+    expect(toasts.length).toBe(3);
   });
 
   it("throws error if useToast is used outside provider", () => {

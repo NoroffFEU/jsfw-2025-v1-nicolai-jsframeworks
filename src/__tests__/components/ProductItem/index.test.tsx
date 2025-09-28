@@ -5,12 +5,10 @@ import ProductItem from "../../../components/ProductItem";
 import { useCart } from "../../../components/CartContext";
 import { IProduct } from "../../../components/typescript";
 
-// Mock useCart hook
 jest.mock("../../../components/CartContext", () => ({
   useCart: jest.fn(),
 }));
 
-// Mock react-router-dom fully (no BrowserRouter needed)
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children }: { to: string; children: React.ReactNode }) => (
     <a href={to}>{children}</a>

@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import Layout from "../../../components/Layout";
 
-// Mock Header
 jest.mock("../../../components/Header", () => () => (
   <div data-testid="header">Header</div>
 ));
@@ -24,8 +23,6 @@ describe("Layout component", () => {
         <Layout />
       </MemoryRouter>
     );
-    // since Outlet won’t render anything without routes, 
-    // we just check that <main> exists
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 
