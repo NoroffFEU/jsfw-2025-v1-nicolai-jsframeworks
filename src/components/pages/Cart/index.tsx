@@ -1,16 +1,17 @@
 import React, { useMemo } from "react";
+import { useNavigate } from "react-router-dom"; // <-- import this
 import CartItem from "../../CartItem";
 import { useCart } from "../../CartContext";
 import { IProduct } from "../../typescript.tsx";
 
 function Cart() {
+  const { cart, clearCart, totalQuantity } = useCart();
+  const navigate = useNavigate();
   function handleCheckout() {
-    window.location.href = "/success";
-    // Update to clear out cart
     clearCart();
     sessionStorage.clear();
+    navigate("/success"); // <-- navigate without reload
   }
-  const { cart, clearCart, totalQuantity } = useCart();
 
   const totalPrice = useMemo(() => {
     return cart.reduce((total, item: IProduct) => {
