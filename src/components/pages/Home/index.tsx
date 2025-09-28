@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,22 +22,20 @@ function Home() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [searchTerms.length]);
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const query = search || searchTerms[currentIndex];
     navigate(`/products?search=${encodeURIComponent(query)}`);
   };
-
-  const rotatingSearchTerm = () => search || searchTerms[currentIndex];
 
   return (
     <section
       className="bg-cover bg-center w-full h-full flex items-center justify-center relative"
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/7662302/pexels-photo-7662302.jpeg?_gl=1*noa41a*_ga*NTAxNDM3OTM3LjE3NTc1MTc2MDc.*_ga_8JE65Q40S6*czE3NTg2MjEyMTEkbzQkZzEkdDE3NTg2MjE0MTkkajU4JGwwJGgw')",
+          "url('https://images.pexels.com/photos/7662302/pexels-photo-7662302.jpeg')",
       }}
       aria-label="Welcome section"
     >
@@ -82,8 +80,8 @@ function Home() {
         <aside className="bodytext text-secondary text-right w-[35%]">
           At A.Warehouse we sell and list all sorts of things and bits from all
           over the cosmos. Feel free to browse our extended catalogue of items.
-          <br></br>
-          <br></br>
+          <br />
+          <br />
           If it exists, you will find it here
         </aside>
       </div>
@@ -103,8 +101,8 @@ function Home() {
             At A.Warehouse we sell and list all sorts of things and bits from
             all over the cosmos. Feel free to browse our extended catalogue of
             items.
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             If it exists, you will find it here
           </aside>
         </section>

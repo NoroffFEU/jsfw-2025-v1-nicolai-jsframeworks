@@ -37,9 +37,15 @@ function ProductItem({ product }: ProductItemProps) {
           <ul className="flex gap-1">
             {Array.from({ length: 5 }, (_, index) => (
               <li key={index}>
-                <div className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent dark:bg-secondary rounded-full flex items-center justify-center">
+                <div
+                  className="w-[10px] h-[10px] md:w-3 md:h-3 bg-accent dark:bg-secondary rounded-full flex items-center justify-center"
+                  data-testid="empty-dot"
+                >
                   {index < rating && (
-                    <div className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"></div>
+                    <div
+                      data-testid="filled-dot"
+                      className="w-[6px] h-[6px] md:w-2 md:h-2 bg-primary rounded-full z-10"
+                    ></div>
                   )}
                 </div>
               </li>

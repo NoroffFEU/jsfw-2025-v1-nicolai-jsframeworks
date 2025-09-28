@@ -24,7 +24,7 @@ function Products() {
     }, 3000);
 
     return () => clearInterval(interval); // cleanup on unmount
-  }, []);
+  }, [searchTerms.length]);
 
   const [search, setSearch] = useState(initialSearch);
   const [debouncedSearch, setDebouncedSearch] = useState("");
