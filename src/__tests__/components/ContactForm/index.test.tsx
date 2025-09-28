@@ -1,4 +1,3 @@
-// ContactForm.test.tsx
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -78,8 +77,6 @@ describe("ContactForm", () => {
         "success"
       );
     });
-
-    // fields should reset
     expect(screen.getByPlaceholderText(/Name/i)).toHaveValue("");
     expect(screen.getByPlaceholderText(/Subject/i)).toHaveValue("");
     expect(screen.getByPlaceholderText(/E-mail/i)).toHaveValue("");

@@ -4,7 +4,6 @@ import ShowingProducts from "../../../components/ShowingProducts";
 import { useApi } from "../../../components/hook/useApiProducts";
 import { useToast } from "../../../components/ToastContext";
 
-// Mock dependencies
 jest.mock("../../../components/hook/useApiProducts");
 jest.mock("../../../components/ToastContext");
 jest.mock("../../../components/ProductItem", () => ({ product }: any) => (
@@ -110,7 +109,6 @@ describe("ShowingProducts", () => {
     const observeMock = jest.fn();
     const disconnectMock = jest.fn();
 
-    // Mock IntersectionObserver
     (window as any).IntersectionObserver = jest.fn((callback) => ({
       observe: observeMock,
       disconnect: disconnectMock,

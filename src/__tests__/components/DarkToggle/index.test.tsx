@@ -20,11 +20,9 @@ describe("DarkToggle", () => {
     render(<DarkToggle />);
     const checkbox = screen.getByRole("checkbox");
 
-    // turn on
     fireEvent.click(checkbox);
     expect(document.documentElement).toHaveClass("dark");
 
-    // turn off
     fireEvent.click(checkbox);
     expect(document.documentElement).not.toHaveClass("dark");
     expect(checkbox).not.toBeChecked();

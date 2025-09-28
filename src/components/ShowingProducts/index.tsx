@@ -18,7 +18,7 @@ function ShowingProducts({ search }: { search: string }) {
   useEffect(() => {
     if (!search) {
       setFilteredData(data);
-      setNoResultsShown(false); // reset guard when no search
+      setNoResultsShown(false);
     } else {
       const lowerSearch = search.toLowerCase();
       const filtered = data.filter((product) =>
@@ -30,12 +30,11 @@ function ShowingProducts({ search }: { search: string }) {
         showToast("No results found for your search", "error");
         setNoResultsShown(true);
       } else if (filtered.length > 0 && noResultsShown) {
-        setNoResultsShown(false); // reset when results appear
+        setNoResultsShown(false);
       }
     }
   }, [search, data, showToast, noResultsShown]);
 
-  // Infinite scroll using IntersectionObserver
   useEffect(() => {
     if (!meta || meta.isLastPage) return;
     if (loading) return;
