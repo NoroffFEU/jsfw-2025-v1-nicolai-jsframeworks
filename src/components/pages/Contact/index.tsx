@@ -1,4 +1,3 @@
-import React from "react";
 import ContactForm from "../../ContactForm";
 
 function Contact() {
@@ -20,8 +19,8 @@ function Contact() {
               <span className="hidden md:block">
                 Got an inquiry about our products or a complaint?
               </span>
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               Contact us using the form under.
             </p>
           </div>

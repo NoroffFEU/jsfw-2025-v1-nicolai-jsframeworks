@@ -1,5 +1,4 @@
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ShowingProducts from "../../../components/ShowingProducts";
 import { useApi } from "../../../components/hook/useApiProducts";
 import { useToast } from "../../../components/ToastContext";

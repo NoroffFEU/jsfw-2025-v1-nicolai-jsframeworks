@@ -29,6 +29,10 @@ body {
   }
 
   .navLink {
-    @apply flex items-center text-primary active:font-bold active:text-accent uppercase text-sm font-inter font-medium lg:hover:text-accent lg:dark:hover:text-secondary lg:hover:font-bold tracking-[0.1rem] transition-all !duration-500;
+    @apply flex items-center text-primary uppercase text-sm font-inter font-medium lg:hover:text-accent lg:dark:hover:text-secondary lg:hover:font-bold tracking-[0.1rem] transition-all !duration-500;
+  }
+
+  .navLink.active {
+    @apply font-bold text-accent dark:text-secondary;
   }
 }
