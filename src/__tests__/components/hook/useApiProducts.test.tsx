@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { useApi } from "../../../components/hook/useApiProducts";
-import React from "react";
 
 const TestComponent = ({ url }: { url: string }) => {
   const { data, meta, loading, error } = useApi(url);

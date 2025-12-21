@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import ShowingProducts from "../../ShowingProducts";
 import { useLocation } from "react-router-dom";

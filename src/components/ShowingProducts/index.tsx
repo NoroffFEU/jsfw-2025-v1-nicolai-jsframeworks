@@ -1,6 +1,6 @@
 import ProductItem from "../ProductItem";
 import { useApi } from "../hook/useApiProducts";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IProduct } from "../typescript";
 import { useToast } from "../ToastContext";
 
@@ -58,7 +58,7 @@ function ShowingProducts({ search }: { search: string }) {
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 gap-y-12 w-full md:w-[80%] xl:w-1/2 px-5 pb-5">
-      {filteredData.map((product: any, index: number) => {
+      {filteredData.map((product: IProduct, index: number) => {
         if (index === data.length - 1) {
           return (
             <li ref={lastProductRef} key={product.id}>

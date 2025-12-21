@@ -1,4 +1,3 @@
-import React from "react";
 import { StarFourIcon } from "@phosphor-icons/react";
 import { IProduct } from "../typescript.tsx";
 import { useCart } from "../CartContext";

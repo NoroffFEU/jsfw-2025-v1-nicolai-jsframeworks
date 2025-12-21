@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useToast } from "../../ToastContext";
 
@@ -42,11 +42,11 @@ function Success() {
           <p className="bodytext text-secondary dark:text-accent text-center md:text-left w-[280px] md:w-[40%]">
             Your order is now on the way. Please check your email for the
             receipt.
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             Thank you for shopping at a.warehouse.
-            <br></br>
-            <br></br>
+            <br />
+            <br />
             <Link
               to="/products"
               className="underline text-primary lg:hover:text-accent"

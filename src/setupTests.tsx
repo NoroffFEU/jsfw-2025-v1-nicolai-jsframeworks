@@ -6,7 +6,7 @@ jest.mock("react-router-dom", () => {
     MemoryRouter: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
     BrowserRouter: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
     Routes: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-    Route: ({ element }: { element: React.ReactNode }) => <>{element}</>,
+    Route: ({ element }: { element: React.ReactNode }) => <div>{element}</div>,
     Outlet: () => <div data-testid="outlet" />,
 
     // Links
