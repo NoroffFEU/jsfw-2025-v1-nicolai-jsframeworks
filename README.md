@@ -2,6 +2,9 @@
 
 This project is an online-shop site written with React and Tailwind. You can check out the live website [here.](https://awarehousenab.netlify.app/)
 
+<img width="1993" height="1352" alt="image" src="https://github.com/user-attachments/assets/be32d9ad-5228-433f-8ae3-46ffa5b7ef5c" />
+
+
 ## How to run the project
 
 ### Prerequisites
